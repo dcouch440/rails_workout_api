@@ -176,4 +176,3 @@ rails db:migrate
 ```
 
 * visit localhost:3000 to view the app
-## `Routes & Api Information`
