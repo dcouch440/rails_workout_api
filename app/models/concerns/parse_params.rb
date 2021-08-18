@@ -23,4 +23,12 @@ module ParseParams
     }
   end
 
+  def self.parse_employee params
+    {
+      name: params[:name],
+      employment_active: params[:employment_active],
+      hired: params[:hired]
+    }
+  end
+
 end
