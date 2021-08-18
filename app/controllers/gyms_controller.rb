@@ -9,12 +9,15 @@ class GymsController < ApplicationController
   end
 
   def update
-    json_response(Gym.find_and_update(update_params))
+    gym = Gym.find(params[:id])
+    if gym.update!(update_params)
+      json_response(gym)
+    end
   end
 
   def destroy
     Gym.find(params[:id]).destroy!
-    json_response({message: 'deleted'}, :no_content)
+    json_response({ message: 'deleted' }, :no_content)
   end
 
   def create
