@@ -10,6 +10,4 @@ RSpec.describe Member, type: :model do
     it { should validate_presence_of property }
   end
 
-  it { should validate_exclusion_of(:membership_active).in_array [nil] }
-
 end
