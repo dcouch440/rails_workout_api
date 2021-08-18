@@ -4,6 +4,7 @@ describe 'POST Member' do
 
   describe '#create', :type => :request do
 
+  let!(:gym) { FactoryBot.create(:gym) }
   let(:location) { FactoryBot.build(:location) }
   let(:member) { FactoryBot.build(:member) }
 
@@ -11,8 +12,8 @@ describe 'POST Member' do
 
       @member_name,
       @membership_active = member
-                           .values_at :name,
-                                      :membership_active
+                            .values_at :name,
+                                       :membership_active
 
       @location_street_address,
       @location_state_province,
@@ -23,7 +24,7 @@ describe 'POST Member' do
                                            :city,
                                            :postal_code
 
-      post members_path, params: {
+      post gym_members_path(gym.id), params: {
         :name => @member_name,
         :membership_active => @membership_active,
         :street_address => @location_street_address,
