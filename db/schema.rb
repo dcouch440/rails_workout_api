@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_18_031501) do
+ActiveRecord::Schema.define(version: 2021_08_18_040512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,10 @@ ActiveRecord::Schema.define(version: 2021_08_18_031501) do
     t.bigint "gym_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "active"
+    t.boolean "employment_active"
+    t.bigint "location_id", null: false
     t.index ["gym_id"], name: "index_employees_on_gym_id"
+    t.index ["location_id"], name: "index_employees_on_location_id"
   end
 
   create_table "gyms", force: :cascade do |t|
@@ -47,11 +49,13 @@ ActiveRecord::Schema.define(version: 2021_08_18_031501) do
   create_table "members", force: :cascade do |t|
     t.string "name"
     t.date "signed_up"
-    t.boolean "membership"
+    t.boolean "membership_active"
     t.bigint "gym_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "location_id", null: false
     t.index ["gym_id"], name: "index_members_on_gym_id"
+    t.index ["location_id"], name: "index_members_on_location_id"
   end
 
   create_table "shifts", force: :cascade do |t|
@@ -73,8 +77,10 @@ ActiveRecord::Schema.define(version: 2021_08_18_031501) do
   end
 
   add_foreign_key "employees", "gyms"
+  add_foreign_key "employees", "locations"
   add_foreign_key "gyms", "locations"
   add_foreign_key "members", "gyms"
+  add_foreign_key "members", "locations"
   add_foreign_key "shifts", "employees"
   add_foreign_key "visits", "members"
 end
