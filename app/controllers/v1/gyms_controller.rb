@@ -1,4 +1,4 @@
-class GymsController < ApplicationController
+class V1::GymsController < ApplicationController
 
   def index
     json_response(Gym.all)

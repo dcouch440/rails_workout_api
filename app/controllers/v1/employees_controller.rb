@@ -1,4 +1,4 @@
-class EmployeesController < ApplicationController
+class V1::EmployeesController < ApplicationController
   def index
     json_response(Employee.all)
   end

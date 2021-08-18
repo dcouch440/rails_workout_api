@@ -1,4 +1,4 @@
-class MembersController < ApplicationController
+class V1::MembersController < ApplicationController
 
   def index
     json_response(Member.all)
