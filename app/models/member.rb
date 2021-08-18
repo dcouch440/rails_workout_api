@@ -10,12 +10,13 @@ class Member < ApplicationRecord
 
   validates *%i[
     name
-    signed_up
     membership_active
   ], presence: true
 
-  before_save %i[
-    downcase_membership
-  ]
+  def self.create_employee_with_location params
+    location = ParseParams::parse_employee params
+    gym = ParseParams::parse_gym params
+    Location.create!(location).create_gym(gym)
+  end
 
 end
