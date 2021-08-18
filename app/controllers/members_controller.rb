@@ -41,6 +41,7 @@ class MembersController < ApplicationController
       postal_code
       name
       membership_active
+      gym_id
     ]
   end
 
