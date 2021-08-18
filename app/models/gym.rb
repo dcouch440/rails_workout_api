@@ -6,6 +6,11 @@ class Gym < ApplicationRecord
   has_many :members
   has_many :employees
 
+  validates *%i[
+    name
+    established
+  ], presence: true
+
   def self.create_gym_with_location params
     location = ParseParams::parse_location params
     gym = ParseParams::parse_gym params
