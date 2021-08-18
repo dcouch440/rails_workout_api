@@ -1,6 +1,7 @@
 class Location < ApplicationRecord
+
   has_one :gym
-  has_one :user
+  has_one :member
   has_one :employee
 
   before_save :add_slug
@@ -17,4 +18,5 @@ class Location < ApplicationRecord
   def add_slug
     self.slug = city.parameterize
   end
+
 end
