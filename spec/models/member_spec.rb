@@ -6,7 +6,7 @@ RSpec.describe Member, type: :model do
   it { should belong_to :location }
   it { should have_many :visits }
 
-  %i[ name signed_up membership_active ].each do |property|
+  %i[ name membership_active ].each do |property|
     it { should validate_presence_of property }
   end
 
