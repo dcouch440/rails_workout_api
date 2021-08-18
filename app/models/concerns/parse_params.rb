@@ -16,4 +16,11 @@ module ParseParams
     }
   end
 
+  def self.parse_member params
+    {
+      name: params[:name],
+      membership_active: params[:membership_active]
+    }
+  end
+
 end
