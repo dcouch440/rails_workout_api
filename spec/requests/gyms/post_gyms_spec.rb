@@ -1,18 +1,18 @@
 require 'rails_helper'
 
-describe 'POST Gym', :type => :request do
+describe 'POST Gym' do
+
+  describe '#create', :type => :request do
 
   let(:location) { FactoryBot.build(:location) }
   let(:gym) { FactoryBot.build(:gym) }
-
-  describe '#create' do
 
     before do
 
       @gym_name,
       @gym_established = gym
-                          .values_at :name,
-                                    :established
+                           .values_at :name,
+                                      :established
 
       @gym_established_string = @gym_established.to_s()
 
@@ -21,9 +21,9 @@ describe 'POST Gym', :type => :request do
       @location_city,
       @location_postal_code = location
                                 .values_at :street_address,
-                                          :state_province,
-                                          :city,
-                                          :postal_code
+                                           :state_province,
+                                           :city,
+                                           :postal_code
 
       post gyms_path, params: {
         :name => @gym_name,
@@ -53,16 +53,40 @@ describe 'POST Gym', :type => :request do
                                         :postal_code
     end
 
-    it 'creates a gym with a name and established date' do
-      expect(@response_name).to eql @gym_name
-      expect(@response_established).to eql @gym_established_string
+    context 'when successful' do
+
+      it 'creates a gym with a name and established date' do
+        expect(@response_name).to eql @gym_name
+        expect(@response_established).to eql @gym_established_string
+      end
+
+      it 'saves location in its own table' do
+        expect(@saved_street_address).to eql @location_street_address
+        expect(@saved_state_province).to eql @location_state_province
+        expect(@saved_city).to eql @location_city
+        expect(@saved_postal_code).to eql @location_postal_code
+      end
+
     end
 
-    it 'saves location in its own table' do
-      expect(@saved_street_address).to eql @location_street_address
-      expect(@saved_state_province).to eql @location_state_province
-      expect(@saved_city).to eql @location_city
-      expect(@saved_postal_code).to eql @location_postal_code
+  end
+
+  describe '#create', :type => :request do
+
+    context 'when unsuccessful' do
+
+      it 'returns a status code of 422' do
+        post gyms_path, params: {
+          :name => '',
+          :established => '',
+          :street_address => '',
+          :state_province => '',
+          :city => '',
+          :postal_code => 0
+        }
+        expect(response).to have_http_status :unprocessable_entity
+      end
+
     end
 
   end
