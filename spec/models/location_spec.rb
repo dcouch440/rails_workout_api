@@ -8,7 +8,7 @@ RSpec.describe Location, type: :model do
   it { should have_one(:member).dependent(:destroy) }
   it { should have_one(:employee).dependent(:destroy) }
 
-  %i[street_address state_province city postal_code].each do |property|
+  %i[ street_address state_province city postal_code ].each do |property|
     it { should validate_presence_of property }
   end
 
