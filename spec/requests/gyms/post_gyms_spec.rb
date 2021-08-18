@@ -77,12 +77,12 @@ describe 'POST Gym' do
 
       it 'returns a status code of 422' do
         post gyms_path, params: {
-          :name => '',
-          :established => '',
-          :street_address => '',
-          :state_province => '',
+          :name => 'Dan',
+          :established => '1/11/2020',
+          :street_address => '123 street',
+          :state_province => 'CA',
           :city => '',
-          :postal_code => 0
+          :postal_code => 90210
         }
         expect(response).to have_http_status :unprocessable_entity
       end
