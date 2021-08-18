@@ -11,8 +11,8 @@ describe 'POST Gym', :type => :request do
 
       @gym_name,
       @gym_established = gym
-                      .values_at :name,
-                                 :established
+                          .values_at :name,
+                                    :established
 
       @gym_established_string = @gym_established.to_s()
 
@@ -20,10 +20,10 @@ describe 'POST Gym', :type => :request do
       @location_state_province,
       @location_city,
       @location_postal_code = location
-                      .values_at :street_address,
-                                 :state_province,
-                                 :city,
-                                 :postal_code
+                                .values_at :street_address,
+                                          :state_province,
+                                          :city,
+                                          :postal_code
 
       post gyms_path, params: {
         :name => @gym_name,
