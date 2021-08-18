@@ -5,8 +5,7 @@ class Employee < ApplicationRecord
 
   has_many :shifts, dependent: :destroy
 
-  validates :employment_active, inclusion: [true, false]
-  validates :employment_active, exclusion: [nil]
+  validates :employment_active, inclusion: ['active', 'inactive']
 
   validates *%i[
     name
