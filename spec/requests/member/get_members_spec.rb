@@ -10,7 +10,7 @@ describe 'GET member', :type => :request do
   describe '#index' do
 
     before do
-      get members_path
+      get v1_members_path
 
       @response_name,
       @response_membership_active,

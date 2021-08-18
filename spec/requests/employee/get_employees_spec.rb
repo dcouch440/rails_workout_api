@@ -10,7 +10,7 @@ describe 'GET Employee', :type => :request do
   describe '#index' do
 
     before do
-      get employees_path
+      get v1_employees_path
 
       @response_name,
       @response_employment_active,

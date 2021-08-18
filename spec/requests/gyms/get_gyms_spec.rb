@@ -7,7 +7,7 @@ describe 'GET Gym', :type => :request do
   describe '#index' do
 
     before do
-      get gyms_path
+      get v1_gyms_path
 
       @response_name,
       @response_established,

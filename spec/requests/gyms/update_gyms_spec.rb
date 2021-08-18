@@ -9,7 +9,7 @@ describe 'Update Gym', :type => :request do
   describe '#update' do
 
     before do
-      patch gym_path(gym_id), params: patch_params
+      patch v1_gym_path(gym_id), params: patch_params
       @response_name,
       @response_established,
       @response_id = JSON

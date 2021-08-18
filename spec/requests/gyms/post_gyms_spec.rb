@@ -25,7 +25,7 @@ describe 'POST Gym' do
                                            :city,
                                            :postal_code
 
-      post gyms_path, params: {
+      post v1_gyms_path, params: {
         :name => @gym_name,
         :established => @gym_established,
         :street_address => @location_street_address,
@@ -76,7 +76,7 @@ describe 'POST Gym' do
     context 'when unsuccessful' do
 
       it 'returns a status code of 422' do
-        post gyms_path, params: {
+        post v1_gyms_path, params: {
           :name => 'Dan',
           :established => '1/11/2020',
           :street_address => '123 street',

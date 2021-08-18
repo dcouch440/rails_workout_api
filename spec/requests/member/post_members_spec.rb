@@ -24,7 +24,7 @@ describe 'POST Member' do
                                            :city,
                                            :postal_code
 
-      post gym_members_path(gym.id), params: {
+      post v1_gym_members_path(gym.id), params: {
         :name => @member_name,
         :membership_active => @membership_active,
         :street_address => @location_street_address,
@@ -75,7 +75,7 @@ describe 'POST Member' do
     context 'when unsuccessful' do
 
       it 'returns a status code of 422' do
-        post members_path, params: {
+        post v1_members_path, params: {
           :name => 'Dan',
           :membership_active => '1/11/2020',
           :street_address => '123 street',

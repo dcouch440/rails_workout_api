@@ -10,14 +10,14 @@ describe 'SHOW Gym', :type => :request do
     context 'when successful' do
 
       it 'returns the first indexed gym' do
-        get gym_path(first_gym_id)
+        get v1_gym_path(first_gym_id)
         parsed_response = JSON.parse(response.body)
         expect(parsed_response['id']).to eql first_gym_id
         expect(response).to have_http_status :ok
       end
 
       it 'returns the last indexed gym' do
-        get gym_path(last_gym_id)
+        get v1_gym_path(last_gym_id)
         parsed_response = JSON.parse(response.body)
         expect(parsed_response['id']).to eql last_gym_id
         expect(response).to have_http_status :ok
@@ -28,7 +28,7 @@ describe 'SHOW Gym', :type => :request do
     context 'when unsuccessful' do
 
       it 'returns the an error code of 404' do
-        get gym_path(last_gym_id + 1)
+        get v1_gym_path(last_gym_id + 1)
         expect(response).to have_http_status :not_found
       end
 

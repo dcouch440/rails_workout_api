@@ -13,7 +13,7 @@ describe 'Update Member', :type => :request do
 
       it 'update a member' do
 
-        patch member_path(member_id), params: successful_patch_params
+        patch v1_member_path(member_id), params: successful_patch_params
 
         @response_name,
         @response_membership_active,
@@ -34,7 +34,7 @@ describe 'Update Member', :type => :request do
     context 'when unsuccessful' do
 
       it 'returns a status code of 422' do
-        patch member_path(member_id), params: unsuccessful_patch_params
+        patch v1_member_path(member_id), params: unsuccessful_patch_params
         expect(response).to have_http_status 422
       end
 

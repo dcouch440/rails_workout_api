@@ -24,7 +24,7 @@ describe 'POST Employee' do
                                            :city,
                                            :postal_code
 
-      post gym_employees_path(gym.id), params: {
+      post v1_gym_employees_path(gym.id), params: {
         :name => @employee_name,
         :hired => @hired,
         :employment_active => @employment_active,
@@ -78,7 +78,7 @@ describe 'POST Employee' do
     context 'when unsuccessful' do
 
       it 'returns a status code of 422' do
-        post gym_employees_path(gym_id), params: {
+        post v1_gym_employees_path(gym_id), params: {
           :name => '',
           :hired => '',
           :employment_active => 'inactive',

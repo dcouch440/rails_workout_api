@@ -10,7 +10,7 @@ describe 'DELETE Gym' do
     context 'when successful' do
 
       it 'deletes a gym' do
-        delete gym_path(gym_id)
+        delete v1_gym_path(gym_id)
         expect(response).to have_http_status :no_content
       end
 
@@ -19,7 +19,7 @@ describe 'DELETE Gym' do
     context 'when unsuccessful' do
 
       it 'returns the an error code of 404' do
-        delete gym_path(gym_id + 1)
+        delete v1_gym_path(gym_id + 1)
         expect(response).to have_http_status :not_found
       end
 
