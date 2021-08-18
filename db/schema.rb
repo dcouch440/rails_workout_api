@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_18_053914) do
+ActiveRecord::Schema.define(version: 2021_08_18_191340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_08_18_053914) do
     t.bigint "gym_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "employment_active"
+    t.string "employment_active"
     t.bigint "location_id", null: false
     t.index ["gym_id"], name: "index_employees_on_gym_id"
     t.index ["location_id"], name: "index_employees_on_location_id"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2021_08_18_053914) do
 
   create_table "members", force: :cascade do |t|
     t.string "name"
-    t.boolean "membership_active"
+    t.string "membership_active"
     t.bigint "gym_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
