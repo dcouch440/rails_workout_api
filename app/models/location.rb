@@ -1,8 +1,8 @@
 class Location < ApplicationRecord
 
-  has_one :gym
-  has_one :member
-  has_one :employee
+  has_one :gym, dependent: :destroy
+  has_one :member, dependent: :destroy
+  has_one :employee, dependent: :destroy
 
   before_save :add_slug
 

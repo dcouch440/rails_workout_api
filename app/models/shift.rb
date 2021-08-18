@@ -2,7 +2,6 @@ class Shift < ApplicationRecord
 
   belongs_to :employee
 
-
   before_update :check_if_check_out_is_present
   validates :check_in, presence: true
 
