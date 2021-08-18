@@ -12,11 +12,11 @@ describe 'GET Gym', :type => :request do
       @response_name,
       @response_established,
       @response_location_id = JSON
-                               .parse(response.body)
-                               .first()
-                               .values_at 'name',
-                                          'established',
-                                          'location_id'
+                                .parse(response.body)
+                                .first()
+                                .values_at 'name',
+                                           'established',
+                                           'location_id'
 
       @gym_established_string = gym.established.to_s()
       @gym_location_id = gym.location.id
