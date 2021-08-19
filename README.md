@@ -18,7 +18,6 @@ This is an application made to create a database which holds locations, gyms, me
 <img src='./img/work_out.PNG'>
 
 ### Goals
-- Automated Jobs to calculate users average time at the gym.
 - minimum queries per route visit.
 
 ## `Install & Run on your machine  :`
