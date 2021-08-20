@@ -15,13 +15,13 @@ class V1::EmployeesController < ApplicationController
     end
   end
 
+  def create
+    json_response(Employee.create_employee_with_location(employee_creation_params), :created)
+  end
+
   def destroy
     Employee.find(params[:id]).destroy!
     json_response({ message: 'deleted' }, :no_content)
-  end
-
-  def create
-    json_response(Employee.create_employee_with_location(employee_creation_params), :created)
   end
 
   private

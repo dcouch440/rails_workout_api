@@ -15,13 +15,13 @@ class V1::MembersController < ApplicationController
     end
   end
 
+  def create
+    json_response(Member.create_member_with_location(member_creation_params), :created)
+  end
+
   def destroy
     Member.find(params[:id]).destroy!
     json_response({ message: 'deleted' }, :no_content)
-  end
-
-  def create
-    json_response(Member.create_member_with_location(member_creation_params), :created)
   end
 
   private
