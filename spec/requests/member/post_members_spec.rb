@@ -5,15 +5,15 @@ describe 'POST Member' do
   describe '#create', :type => :request do
 
   let!(:gym) { FactoryBot.create(:gym) }
-  let(:location) { FactoryBot.build(:location) }
-  let(:member) { FactoryBot.build(:member) }
+  let!(:location) { FactoryBot.build(:location) }
+  let!(:member) { FactoryBot.build(:member) }
 
     before do
 
       @member_name,
       @membership_active = member
-                            .values_at :name,
-                                       :membership_active
+                             .values_at :name,
+                                        :membership_active
 
       @location_street_address,
       @location_state_province,
@@ -72,10 +72,12 @@ describe 'POST Member' do
 
   describe '#create', :type => :request do
 
+    let!(:gym) { FactoryBot.create(:gym) }
+
     context 'when unsuccessful' do
 
       it 'returns a status code of 422' do
-        post v1_members_path, params: {
+        post v1_gym_members_path(:gym), params: {
           :name => 'Dan',
           :membership_active => '1/11/2020',
           :street_address => '123 street',
