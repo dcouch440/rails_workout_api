@@ -19,11 +19,11 @@ Rails.application.routes.draw do
     end
 
     resources :members, only: %i[ index show create ] do
-      post '/visits', to: 'visits#status'
+      post    '/visits',            to: 'visits#status'
     end
 
     resources :employees, only: %i[ index show update  ] do
-      post '/shifts',   to: 'shifts#status'
+      post    '/shifts',               to: 'shifts#status'
     end
 
 
