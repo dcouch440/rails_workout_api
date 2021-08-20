@@ -1,18 +1,32 @@
 Rails.application.routes.draw do
 
   namespace :v1 do
-    resources :gyms, only: %i[ create index show update destroy ] do
-      resource :members, only: %i[ create update destroy show ]
-      resource :employees, only: %i[ create update destroy show ]
+
+    resources :gyms, except: %i[ new ] do
+
+      get     '/members',           to: 'members#index'
+      get     '/members/:id',       to: 'members#show'
+      patch   '/members/:id',       to: 'members#update'
+      post    '/members',           to: 'members#create'
+      delete  '/members/:id',       to: 'members#destroy'
+
+      get     '/employees',         to: 'employees#index'
+      get     '/employees/:id',     to: 'employees#show'
+      post    '/employees',         to: 'employees#create'
+      patch   '/employees/:id',     to: 'employees#update'
+      delete  '/employees/:id',     to: 'employees#destroy'
+
     end
 
-    resources :employees, only: %i[ create index show update ] do
-      resource :shifts, only: %i[ create update ]
+    resources :members, only: %i[ index show create ] do
+      post '/visits', to: 'visits#status'
     end
 
-    resources :members, only: %i[ create index show update ] do
-      resource :visits, only: %i[ create update ]
+    resources :employees, only: %i[ index show update  ] do
+      post '/shifts',   to: 'shifts#status'
     end
+
+
   end
 
 end
