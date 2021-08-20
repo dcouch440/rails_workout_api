@@ -3,7 +3,9 @@ require 'rails_helper'
 describe 'POST Employee' do
 
   describe '#create', :type => :request do
+
   let!(:gym) { FactoryBot.create(:gym) }
+  let!(:gym_id) { gym.id }
   let(:location) { FactoryBot.build(:location) }
   let(:employee) { FactoryBot.build(:employee) }
 
@@ -24,7 +26,7 @@ describe 'POST Employee' do
                                            :city,
                                            :postal_code
 
-      post v1_gym_employees_path(gym.id), params: {
+      post v1_gym_employees_path gym_id, params: {
         :name => @employee_name,
         :hired => @hired,
         :employment_active => @employment_active,
@@ -33,7 +35,6 @@ describe 'POST Employee' do
         :city => @location_city,
         :postal_code => @location_postal_code
       }
-
 
       @response_name,
       @response_employment_active,
@@ -73,12 +74,14 @@ describe 'POST Employee' do
   end
 
   describe '#create', :type => :request do
+
     let!(:employee) { FactoryBot.create(:employee) }
     let!(:gym_id) { employee.gym_id }
+
     context 'when unsuccessful' do
 
       it 'returns a status code of 422' do
-        post v1_gym_employees_path(gym_id), params: {
+        post v1_gym_employees_path gym_id, params: {
           :name => '',
           :hired => '',
           :employment_active => 'inactive',
