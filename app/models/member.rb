@@ -5,7 +5,8 @@ class Member < ApplicationRecord
 
   has_many :visits, dependent: :destroy
 
-  validates :membership_active, inclusion: ['active', 'inactive']
+  validates :membership_active,
+            inclusion: ['active', 'inactive']
 
   validates *%i[
     name
