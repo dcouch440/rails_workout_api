@@ -10,6 +10,9 @@ describe 'Update Gym', :type => :request do
 
     before do
       patch v1_gym_path(gym_id), params: patch_params
+
+      @response = response
+
       @response_name,
       @response_established,
       @response_id = JSON
@@ -24,6 +27,10 @@ describe 'Update Gym', :type => :request do
       expect(@response_name).to eql patch_params[:name]
       expect(@response_established).to eql patch_params[:established]
       expect(@response_id).to eql gym_id
+    end
+
+    it 'should return with a 200 response status' do
+      expect(@response).to have_http_status :ok
     end
 
   end
