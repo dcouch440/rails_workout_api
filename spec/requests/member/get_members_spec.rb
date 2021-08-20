@@ -12,6 +12,8 @@ describe 'GET member', :type => :request do
     before do
       get v1_members_path
 
+      @response = response
+
       @response_name,
       @response_membership_active,
       @response_location_id = JSON
