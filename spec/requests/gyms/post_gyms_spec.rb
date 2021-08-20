@@ -4,8 +4,8 @@ describe 'POST Gym' do
 
   describe '#create', :type => :request do
 
-  let(:location) { FactoryBot.build(:location) }
-  let(:gym) { FactoryBot.build(:gym) }
+  let!(:location) { FactoryBot.build(:location) }
+  let!(:gym) { FactoryBot.build(:gym) }
 
     before do
 
@@ -33,6 +33,8 @@ describe 'POST Gym' do
         :city => @location_city,
         :postal_code => @location_postal_code
       }
+
+      @response = response
 
       @response_name,
       @response_established,
@@ -65,6 +67,10 @@ describe 'POST Gym' do
         expect(@saved_state_province).to eql @location_state_province
         expect(@saved_city).to eql @location_city
         expect(@saved_postal_code).to eql @location_postal_code
+      end
+
+      it 'should return with a 201 response status' do
+        expect(@response).to have_http_status :created
       end
 
     end
