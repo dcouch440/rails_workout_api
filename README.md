@@ -4,13 +4,12 @@
 
 ## About
 
-This is an application made to create a database which holds locations, gyms, members, employees, visits, averages, and shifts. This is a work in process to explore the functionality of automation and complex systems.
+This is an application made to create a database which holds locations, gyms, members, employees, visits, and shifts.
 
 - `locations`: Locations will be stored for gyms, members and employees.
 - `gyms`: This will be the gym that will have members, and employees.
 - `members`: Members will have visits.
-    - `visits`: this will when the user signs in and signs out. This can be used to judge how long a user spends at the gym on average.
-    - `averages`: This will be where the averages of the users time spent will be held. This process will be handled by the API. An automated system will be put in place to add new entries to track visiter behavior.
+    - `visits`: this will when the user signs in and signs out.
 - `employees`: employees will have shifts.
     - `shifts`: this will be for when the employee clocks in ands clocks out.
 
