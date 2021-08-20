@@ -14,7 +14,7 @@ This is an application made to create a database which holds locations, gyms, me
     - `shifts`: this will be for when the employee clocks in ands clocks out.
 
 #### `Schema in the works`
-<img src='./img/work_out.PNG'>
+<img src='./img/work_out_2.PNG'>
 
 ### Goals
 - minimum queries per route visit.
