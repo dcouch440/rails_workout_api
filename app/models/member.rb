@@ -14,8 +14,8 @@ class Member < ApplicationRecord
   ], presence: true
 
   def self.create_member_with_location params
-    location = ParseParams::parse_location params
-    member = ParseParams::parse_member params
+    location = ParseParams.parse_location params
+    member = ParseParams.parse_member params
     location = Location.create!(location)
     Gym.find(params[:gym_id]).members.create!({ **member, location_id: location.id })
   end

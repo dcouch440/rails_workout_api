@@ -12,8 +12,8 @@ class Employee < ApplicationRecord
   validates_presence_of :employment_active
 
   def self.create_employee_with_location params
-    location = ParseParams::parse_location params
-    employee = ParseParams::parse_employee params
+    location = ParseParams.parse_location params
+    employee = ParseParams.parse_employee params
     location = Location.create!(location)
     Gym.find(params[:gym_id]).employees.create!({ **employee, location_id: location.id })
   end
