@@ -31,4 +31,10 @@ module ParseParams
     }
   end
 
+  def self.parse_time params
+    {
+      time: params[:time]
+    }
+  end
+
 end
