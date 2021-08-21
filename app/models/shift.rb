@@ -24,4 +24,8 @@ class Shift < ApplicationRecord
     end
   end
 
+  def self.find_shift_by_employee_and_shift_id params
+    Employee.find(params[:employee_id]).shifts.find(params[:id])
+  end
+
 end
