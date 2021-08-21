@@ -5,20 +5,29 @@ class V1::VisitsController < ApplicationController
   end
 
   def update
-    visit = Member.find(params[:member_id]).visits.find(params[:id])
+    visit = Visit.find_visit_by_member_and_visit_id id_params
     visit.update!(update_params)
     json_response(visit)
   end
 
-  def status
-    json_response(*Shift.add_visitation_status(visitation_params))
+  def show
+    visit = Visit.find_visit_by_member_and_visit_id id_params
+    json_response(visit)
   end
+
 
   def status
     json_response(*Visit.add_visitation_status(visitation_params))
   end
 
   private
+
+  def id_params
+    params.permit %i[
+      member_id
+      id
+    ]
+  end
 
   def update_params
     params.permit %i[
