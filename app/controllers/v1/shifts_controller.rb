@@ -5,8 +5,13 @@ class V1::ShiftsController < ApplicationController
   end
 
   def update
-    shift = Employee.find(params[:employee_id]).shifts.find(params[:id])
+    shift = Shift.find_shift_by_employee_and_shift_id id_params
     shift.update!(update_params)
+    json_response(shift)
+  end
+
+  def show
+    shift = Shift.find_shift_by_employee_and_shift_id id_params
     json_response(shift)
   end
 
@@ -15,6 +20,13 @@ class V1::ShiftsController < ApplicationController
   end
 
   private
+
+  def id_params
+    params.permit %i[
+      employee_id
+      id
+    ]
+  end
 
   def update_params
     params.permit %i[
