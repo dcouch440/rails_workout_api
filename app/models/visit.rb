@@ -24,4 +24,8 @@ class Visit < ApplicationRecord
     end
   end
 
+  def self.find_visit_by_member_and_visit_id params
+    Member.find(params[:member_id]).visits.find(params[:id])
+  end
+
 end
