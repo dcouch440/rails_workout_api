@@ -1,4 +1,4 @@
-## Work out Gym Management API
+## Work Out Gym Management API
 
 ### Created By David Couch 8/17/2021
 
