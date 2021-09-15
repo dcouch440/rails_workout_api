@@ -12,12 +12,21 @@ This is an application made to create a database which holds locations, gyms, me
     - `visits`: this will when the user signs in and signs out.
 - `employees`: employees will have shifts.
     - `shifts`: this will be for when the employee clocks in ands clocks out.
+## Tech Used
+- Ruby
+- Rails
+- PG
+- Rspec Rails
+- Faker
+- Shoulda Matchers
+- Factory Bot Rails
 
-#### `Schema in the works`
+#### `Schema`
 <img src='./img/work_out_2.PNG'>
 
 ### Goals
 - minimum queries per route visit.
+  
 ### Routes
 
 ```
