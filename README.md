@@ -18,6 +18,45 @@ This is an application made to create a database which holds locations, gyms, me
 
 ### Goals
 - minimum queries per route visit.
+### Routes
+
+```
+GET    /v1/gyms/:gym_id/members              v1/members#index
+POST   /v1/gyms/:gym_id/members              v1/members#create
+GET    /v1/gyms/:gym_id/members/:id          v1/members#show
+PATCH  /v1/gyms/:gym_id/members/:id          v1/members#update
+PUT    /v1/gyms/:gym_id/members/:id          v1/members#update
+DELETE /v1/gyms/:gym_id/members/:id          v1/members#destroy
+GET    /v1/gyms/:gym_id/employees            v1/employees#index
+POST   /v1/gyms/:gym_id/employees            v1/employees#create
+GET    /v1/gyms/:gym_id/employees/:id        v1/employees#show
+PATCH  /v1/gyms/:gym_id/employees/:id        v1/employees#update
+PUT    /v1/gyms/:gym_id/employees/:id        v1/employees#update
+DELETE /v1/gyms/:gym_id/employees/:id        v1/employees#destroy
+GET    /v1/gyms                              v1/gyms#index
+POST   /v1/gyms                              v1/gyms#create
+GET    /v1/gyms/:id                          v1/gyms#show
+PATCH  /v1/gyms/:id                          v1/gyms#update
+PUT    /v1/gyms/:id                          v1/gyms#update
+DELETE /v1/gyms/:id                          v1/gyms#destroy
+GET    /v1/members/:member_id/visits         v1/visits#index
+GET    /v1/members/:member_id/visits/:id     v1/visits#show
+PATCH  /v1/members/:member_id/visits/:id     v1/visits#update
+PUT    /v1/members/:member_id/visits/:id     v1/visits#update
+POST   /v1/members/:member_id/visits         v1/visits#status
+GET    /v1/members                           v1/members#index
+POST   /v1/members                           v1/members#create
+GET    /v1/members/:id                       v1/members#show
+GET    /v1/employees/:employee_id/shifts     v1/shifts#index
+GET    /v1/employees/:employee_id/shifts/:id v1/shifts#show
+PATCH  /v1/employees/:employee_id/shifts/:id v1/shifts#update
+PUT    /v1/employees/:employee_id/shifts/:id v1/shifts#update
+POST   /v1/employees/:employee_id/shifts     v1/shifts#status
+GET    /v1/employees                         v1/employees#index
+GET    /v1/employees/:id                     v1/employees#show
+PATCH  /v1/employees/:id                     v1/employees#update
+PUT    /v1/employees/:id                     v1/employees#update
+```
 
 ## `Install & Run on your machine  :`
 ***
