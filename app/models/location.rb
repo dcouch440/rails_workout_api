@@ -17,12 +17,7 @@ class Location < ApplicationRecord
 
   private
 
-  def self.update_location params
-
-    employee_id = params[:employee_id]
-    member_id = params[:member_id]
-    gym_id = params[:gym_id]
-
+  def self.update_location employee_id, member_id, gym_id
     if employee_id
       employee_location = Employee.find(employee_id).location
       employee_location.update!(params)

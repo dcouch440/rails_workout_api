@@ -16,7 +16,13 @@ class V1::EmployeesController < ApplicationController
   end
 
   def create
-    json_response(Employee.create_employee_with_location(employee_creation_params), :created)
+    location = ParseParams.parse_location employee_creation_params
+    employee = ParseParams.parse_employee employee_creation_params
+    json_response(Employee.create_employee_with_location(
+      location,
+      employee,
+      employee_creation_params[:gym_id]
+    ), :created)
   end
 
   def destroy

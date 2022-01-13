@@ -21,7 +21,9 @@ class V1::GymsController < ApplicationController
   end
 
   def create
-    json_response(Gym.create_gym_with_location(gym_creation_params), :created)
+    location = ParseParams.parse_location gym_creation_params
+    gym = ParseParams.parse_gym gym_creation_params
+    json_response(Gym.create_gym_with_location(location, gym), :created)
   end
 
   private

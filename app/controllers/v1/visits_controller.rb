@@ -5,19 +5,28 @@ class V1::VisitsController < ApplicationController
   end
 
   def update
-    visit = Visit.find_visit_by_member_and_visit_id id_params
+    visit = Visit.find_visit_by_member_and_visit_id(
+      id_params[:member_id],
+      id_params[:id]
+    )
     visit.update!(update_params)
     json_response(visit)
   end
 
   def show
-    visit = Visit.find_visit_by_member_and_visit_id id_params
+    visit = Visit.find_visit_by_member_and_visit_id(
+      id_params[:member_id],
+      id_params[:id]
+    )
     json_response(visit)
   end
 
 
   def status
-    json_response(*Visit.add_visitation_status(visitation_params))
+    json_response(*Visit.add_visitation_status(
+      visitation_params[:time],
+      visitation_params[:member_id]
+    ))
   end
 
   private

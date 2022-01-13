@@ -1,7 +1,5 @@
 class Shift < ApplicationRecord
 
-  include ParseParams
-
   belongs_to :employee
 
   validates :check_in,
@@ -11,9 +9,8 @@ class Shift < ApplicationRecord
             presence: true,
             on: :update
 
-  def self.add_visitation_status params
-    time_update = params[:time]
-    employee = Employee.find(params[:employee_id])
+  def self.add_visitation_status time_update, employee_id
+    employee = Employee.find(employee_id)
     shift = employee.shifts.last
     if shift == nil || shift['check_out'] != nil
       created_shift = employee.shifts.create!({ check_in: time_update })
@@ -24,8 +21,8 @@ class Shift < ApplicationRecord
     end
   end
 
-  def self.find_shift_by_employee_and_shift_id params
-    Employee.find(params[:employee_id]).shifts.find(params[:id])
+  def self.find_shift_by_employee_and_shift_id employee_id, id
+    Employee.find(employee_id).shifts.find(id)
   end
 
 end

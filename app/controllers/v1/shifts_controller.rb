@@ -5,18 +5,21 @@ class V1::ShiftsController < ApplicationController
   end
 
   def update
-    shift = Shift.find_shift_by_employee_and_shift_id id_params
+    shift = Shift.find_shift_by_employee_and_shift_id(id_params[:employee_id], id_params[:id])
     shift.update!(update_params)
     json_response(shift)
   end
 
   def show
-    shift = Shift.find_shift_by_employee_and_shift_id id_params
+    shift = Shift.find_shift_by_employee_and_shift_id(id_params[:employee_id], id_params[:id])
     json_response(shift)
   end
 
   def status
-    json_response(*Shift.add_visitation_status(visitation_params))
+    json_response(*Shift.add_visitation_status(
+      shifts_params[:time],
+      shifts_params[:employee_id]
+    ))
   end
 
   private
@@ -35,7 +38,7 @@ class V1::ShiftsController < ApplicationController
     ]
   end
 
-  def visitation_params
+  def shifts_params
     params.permit %i[
       time
       employee_id

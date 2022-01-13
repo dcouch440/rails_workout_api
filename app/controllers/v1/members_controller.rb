@@ -16,7 +16,13 @@ class V1::MembersController < ApplicationController
   end
 
   def create
-    json_response(Member.create_member_with_location(member_creation_params), :created)
+    location = ParseParams.parse_location member_creation_params
+    member = ParseParams.parse_member member_creation_params
+    json_response(Member.create_member_with_location(
+      location,
+      member,
+      member_creation_params[:gym_id]
+    ), :created)
   end
 
   def destroy
